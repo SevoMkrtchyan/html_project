@@ -10,7 +10,6 @@
   <head>
     <title>$Title$</title>
     <link rel="stylesheet" href="static/style.css">
-<%--    <link rel="script" href="static/script.js.css">--%>
   </head>
   <body>
   <!-- partial:index.partial.html -->
