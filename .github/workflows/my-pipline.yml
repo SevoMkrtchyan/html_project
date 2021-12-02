@@ -2,7 +2,7 @@ name: CI-CD-Pipeline-to-AWS-ElasticBeastalk
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "portfolio-application-action"
   EB_APPLICATION_NAME       : "MyPortfolio"
-  EB_ENVIRONMENT_NAME       : "Myportfolio-env-1" 
+  EB_ENVIRONMENT_NAME       : "Myportfolio-env" 
   DEPLOY_PACKAGE_NAME       : "html_project_${{ github.sha }}.war"
   AWS_REGION_NAME           : "eu-west-2"
 
