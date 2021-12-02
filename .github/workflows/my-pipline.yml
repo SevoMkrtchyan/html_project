@@ -3,7 +3,7 @@ env:
   EB_PACKAGE_S3_BUCKET_NAME : "portfolio-application-action"
   EB_APPLICATION_NAME       : "MyPortfolio"
   EB_ENVIRONMENT_NAME       : "Myportfolio-env-1" 
-  DEPLOY_PACKAGE_NAME       : "portfolio_app_${{ github.sha }}.zip"
+  DEPLOY_PACKAGE_NAME       : "html_project_${{ github.sha }}.war"
   AWS_REGION_NAME           : "eu-west-2"
 
 on: 
@@ -16,11 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+        cache: maven
+
     - name: Git clone our repo
       uses: actions/checkout@v1
-       
-    - name: Create ZIP deployment package
-      run : zip -r ${{ env.DEPLOY_PACKAGE_NAME }} ./ -x *.git*
+      
+    - name: Build with Maven
+      run: mvn -B ${{ env.DEPLOY_PACKAGE_NAME }} package --file pom.xml
       
     - name: Configure my AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
