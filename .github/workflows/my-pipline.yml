@@ -28,8 +28,8 @@ jobs:
     - name: Git clone our repo
       uses: actions/checkout@v1
       
-    - name: Build with Maven
-      run: mvn -B ${{ env.DEPLOY_PACKAGE_NAME }} package --file pom.xml
+    - name: Build with Maven  
+      run: mvn package -Dwar.finalName=${{ env.DEPLOY_PACKAGE_NAME }}
       
     - name: Configure my AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
